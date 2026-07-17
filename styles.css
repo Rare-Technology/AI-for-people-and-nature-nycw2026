@@ -1,0 +1,463 @@
+/* =========================================================================
+   AI for People & Nature — NYC Climate Week 2026
+   Fonts: Barlow Semi Condensed (display) · Source Sans 3 (text)
+   ========================================================================= */
+
+:root{
+  /* Brand palette */
+  --green-dark:  #00843d;   /* WEF green / "The Framing" card / @ NYCW bubble */
+  --green:       #009a4e;   /* "Shared Signals" card */
+  --lime:        #8dc63f;   /* title, "Naming What's Next" card, accent strip */
+  --lime-dark:   #7ab800;
+  --teal:        #0093c4;   /* "We ask" bubble + label, "Evidence" card */
+  --blue:        #0057a8;   /* "Tech Enablement" card */
+  --gray:        #5b6770;
+
+  --ink:         #3f4a54;   /* section headings */
+  --text:        #46515a;
+  --text-soft:   #6b7680;
+
+  --bg:          #ffffff;
+  --bg-subtle:   #eaedef;   /* session band */
+  --border:      #d7dde1;
+  --white:       #ffffff;
+
+  /* Fonts */
+  --font-display: "Barlow Semi Condensed", system-ui, sans-serif;
+  --font-text:    "Source Sans 3", system-ui, sans-serif;
+
+  /* Layout */
+  --container: 1080px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-text);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+strong{font-weight:700}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+
+/* Centered colon headings that connect the sections
+   ("Here's the concept:", "How it would work:", ...) */
+.flow-heading{
+  font-family:var(--font-display);
+  font-weight:700;
+  color:var(--ink);
+  text-align:center;
+  font-size:clamp(1.4rem, 3.4vw, 2rem);
+  letter-spacing:-.01em;
+  margin:clamp(30px,5vw,48px) 0 clamp(20px,3vw,30px);
+}
+.section-sub{
+  font-size:clamp(1.02rem, 2.2vw, 1.25rem);
+  color:var(--text-soft);
+  margin:0;
+}
+
+/* =========================================================================
+   HERO
+   ========================================================================= */
+.hero{padding-top:clamp(28px,5vw,52px)}
+
+.hero-banner{
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-height:clamp(260px, 27vw, 330px);
+  border-radius:var(--radius);
+  overflow:hidden;                 /* clips the pills to the box */
+  background:#008542;
+  color:var(--white);
+}
+.hero-banner__waves{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:url("assets/green-wave.webp?v=1");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.hero-banner__body{
+  position:relative;z-index:2;
+  padding:clamp(26px,4vw,44px);
+  /* reserve room on the right for the floating pills so text flows wide */
+  padding-right:clamp(150px, 30vw, 330px);
+}
+.hero-title{
+  font-family:var(--font-display);
+  font-weight:800;
+  color:var(--lime);
+  font-size:clamp(2rem, 6vw, 3.2rem);
+  line-height:1.02;
+  margin:0 0 .35em;
+}
+.hero-sub{
+  font-size:clamp(1rem, 2.4vw, 1.3rem);
+  margin:0;
+  line-height:1.35;
+  max-width:42ch;
+}
+.hero-sub strong{color:var(--lime)}
+
+/* two photos as clipped, staggered pills floating on the right */
+.hero-banner__photos{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-pill{
+  position:absolute;
+  aspect-ratio:33 / 50;
+  overflow:hidden;
+  border-radius:999px;             /* capsule / pill */
+  box-shadow:0 10px 26px rgba(0,0,0,.25);
+}
+.hero-pill img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-pill--beach{                 /* upper-right, clipped by the top edge */
+  width:clamp(112px, 15vw, 150px);
+  right:clamp(12px, 2.5vw, 30px);
+  top:clamp(-36px, -2.5vw, -14px);
+  z-index:1;
+}
+.hero-pill--cocoa{                 /* lower, left of the beach pill, clipped at the bottom */
+  width:clamp(126px, 17vw, 168px);
+  right:clamp(70px, 11vw, 128px);
+  bottom:clamp(-42px, -3vw, -16px);
+  z-index:2;
+}
+
+/* =========================================================================
+   CONCEPT — two speech bubbles
+   ========================================================================= */
+.concept-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 clamp(20px,4vw,40px);
+  align-items:stretch;
+}
+.bubble-col{display:flex;flex-direction:column;align-items:center}
+.bubble-eyebrow{
+  font-family:var(--font-display);font-weight:700;
+  font-size:1.35rem;margin:0 0 12px;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.bubble-eyebrow--teal{color:var(--teal)}
+.bubble-eyebrow--green{color:var(--green-dark)}
+.pin{width:20px;height:20px;color:var(--green-dark)}
+
+.bubble{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;             /* fill the column so both bubbles are equal height */
+  border-radius:16px 16px 0 0;   /* square bottom: chart card sits flush below */
+  padding:clamp(20px,3vw,28px);
+  color:var(--white);
+}
+/* pointer on top of each bubble */
+.bubble::before{
+  content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  border-left:13px solid transparent;border-right:13px solid transparent;
+  border-bottom:12px solid currentColor;
+}
+.bubble--teal{background:var(--teal);color:var(--teal)}
+.bubble--green{background:var(--green-dark);color:var(--green-dark)}
+.bubble .bubble-intro,
+.bubble .bubble-lead,
+.bubble .checklist{color:var(--white)}
+
+.bubble-intro{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.05rem,2.2vw,1.28rem);line-height:1.25;margin:0 0 .4em;
+}
+.bubble-lead{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.05rem,2.2vw,1.28rem);
+  line-height:1.25;margin:0;
+}
+
+/* checklist */
+.checklist{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.checklist li{display:flex;align-items:flex-start;gap:10px;font-size:1.05rem;line-height:1.3}
+.check{
+  flex:0 0 auto;width:20px;height:20px;margin-top:2px;border-radius:50%;
+  background:var(--white);position:relative;
+}
+.check::after{
+  content:"";position:absolute;left:6px;top:3px;width:5px;height:9px;
+  border:solid var(--gray);border-width:0 2.5px 2.5px 0;transform:rotate(45deg);
+}
+.bubble--teal .check::after{border-color:var(--teal)}
+/* green bubble: filled green disc with white tick */
+.check--ongreen{background:#4bb469}
+.check--ongreen::after{border-color:var(--white)}
+
+/* chart cards — an image (bar / pie) on a soft grey panel, one per column */
+.chart-card{
+  margin:0;
+  background:#f8fafc;                 /* matches the chart image background */
+  border-radius:0 0 16px 16px;        /* square top: sits flush under the bubble */
+  overflow:hidden;
+  padding-block:clamp(16px,2.5vw,26px);   /* breathing room above/below the chart */
+  display:flex;align-items:center;justify-content:center;
+}
+.chart-img{display:block;width:100%;height:auto}
+
+/* =========================================================================
+   THE FLOW OF THE EVENT — horizontal scroll-snap carousel
+   ========================================================================= */
+.session{
+  background:var(--bg-subtle);
+  padding-block:clamp(30px,5vw,54px);
+  overflow:hidden;
+}
+.session-head{margin-bottom:clamp(20px,4vw,30px)}
+.session-title{
+  font-family:var(--font-display);font-weight:700;color:var(--ink);
+  font-size:clamp(1.4rem,3vw,1.9rem);margin:0 0 .3em;letter-spacing:-.01em;
+}
+
+.cases-viewport{
+  /* .session is already a full-width band, so this child spans the viewport
+     with no transform trick needed (a transformed scroll container breaks
+     horizontal scrolling in some engines). */
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  --cases-inset:calc(max(0px, (100vw - var(--container)) / 2) + var(--gutter));
+  /* snapped cards align to the content gutter, not the viewport edge */
+  scroll-padding-inline:var(--cases-inset);
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.cases-viewport::-webkit-scrollbar{display:none}
+.cases-track{
+  display:flex;align-items:stretch;gap:14px;margin:0;padding:6px 0;
+  padding-inline-start:var(--cases-inset);
+  list-style:none;
+}
+.cases-track::after{content:"";flex:0 0 calc(var(--cases-inset) - 14px)}
+
+/* chevron separators between cards (do not snap) */
+.case-chevron{
+  flex:0 0 auto;align-self:center;
+  color:#98a2aa;font-size:2.4rem;line-height:1;
+  font-family:var(--font-display);font-weight:700;
+  padding-inline:2px;user-select:none;
+}
+
+/* .case-card is just the sizing + perspective wrapper; the visible card
+   surface lives on the two faces so the ENTIRE card flips in 3D. */
+.case-card{
+  position:relative;
+  flex:0 0 min(78vw, 316px);
+  scroll-snap-align:start;
+  perspective:1600px;            /* 3D depth for the flip */
+}
+.case-card:last-child{scroll-snap-align:end}
+
+/* --- the flipping element: two stacked faces --- */
+.case-flip{
+  position:relative;
+  height:var(--case-h, clamp(430px, 60vh, 520px));
+  transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(.2,.75,.2,1);
+}
+.case-card.is-open .case-flip{transform:rotateY(180deg)}
+
+.case-face{
+  --pad:clamp(22px,3vw,30px);
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;gap:12px;
+  /* the card surface */
+  border-radius:22px;
+  padding:var(--pad);
+  padding-bottom:64px;
+  color:var(--white);
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.case-face--back{transform:rotateY(180deg)}
+.case-card--green  .case-face{background:var(--green-dark)}
+.case-card--teal   .case-face{background:var(--teal)}
+.case-card--blue   .case-face{background:var(--blue)}
+.case-card--green2 .case-face{background:var(--green)}
+.case-card--lime   .case-face{background:var(--lime)}
+
+/* title / rule appear on both faces */
+.case-title{
+  font-family:var(--font-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;
+  text-align:center;font-size:clamp(1.1rem,2.2vw,1.35rem);
+  margin:4px 0 0;flex:0 0 auto;
+}
+.case-rule{
+  width:52px;height:0;border:0;border-top:2px solid rgba(255,255,255,.7);
+  margin:2px auto 6px;flex:0 0 auto;
+}
+.case-card--lime .case-rule{border-top-color:rgba(255,255,255,.85)}
+.case-face p{
+  margin:0;text-align:center;
+  font-size:clamp(1rem,2vw,1.12rem);line-height:1.35;
+}
+
+/* front: summary + illustration */
+.case-summary{font-weight:400;flex:0 0 auto}
+/* illustration: anchored to the bottom-centre of the card, bleeding to the
+   card's side and bottom edges so the "+" button lays over it */
+.case-media{
+  position:relative;flex:1 1 auto;min-height:0;aspect-ratio:1 / 1;
+  margin:8px calc(-1 * var(--pad)) -64px;
+  overflow:hidden;border-radius:0 0 22px 22px;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.case-img{width:100%;height:100%;object-fit:contain;object-position:bottom center}
+/* placeholder shown only if the image file is missing */
+.case-img__ph{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  text-align:center;padding:16px;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.10) 0 12px,rgba(255,255,255,.04) 12px 24px);
+  border:2px dashed rgba(255,255,255,.5);border-radius:14px;
+  font-family:var(--font-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;font-size:1rem;color:rgba(255,255,255,.92);
+}
+.case-img__ph[hidden]{display:none}
+.case-img__ph small{
+  font-family:var(--font-text);font-weight:400;text-transform:none;letter-spacing:0;
+  font-size:.72rem;color:rgba(255,255,255,.7);
+}
+.case-card--lime .case-img__ph{color:rgba(255,255,255,.95);border-color:rgba(255,255,255,.6)}
+
+/* back: full text, vertically centered */
+.case-copy{
+  flex:1 1 auto;min-height:0;
+  display:flex;flex-direction:column;justify-content:center;gap:16px;
+}
+
+/* height-measuring pass (JS toggles .measuring): let faces size to content */
+.cases-track.measuring .case-flip{height:auto!important;transform:none!important}
+.cases-track.measuring .case-face{position:static!important;transform:none!important;backface-visibility:visible!important}
+
+/* --- toggle: a "+" on the front face, an "×" on the back face.
+   backface-visibility hides each button along with its face, so the
+   front "+" can't bleed through onto the flipped card. --- */
+.case-toggle{
+  position:absolute;right:18px;bottom:18px;
+  width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.94);
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  transition:background .12s ease;
+}
+.case-toggle:hover{background:#fff}
+.case-toggle:focus-visible{outline:3px solid rgba(255,255,255,.85);outline-offset:2px}
+.case-toggle::before,.case-toggle::after{
+  content:"";position:absolute;left:50%;top:50%;background:var(--ink);border-radius:2px;
+  transform:translate(-50%,-50%);
+}
+.case-toggle::before{width:15px;height:2.5px}
+.case-toggle::after{width:2.5px;height:15px}
+/* the back face's toggle sits bottom-left and is a rotated "+" → an "×" */
+.case-toggle--close{left:18px;right:auto;transform:rotate(45deg)}
+
+.cases-controls{
+  display:flex;justify-content:flex-end;
+  margin-top:clamp(18px,3vw,26px);
+}
+.cases-nav{display:flex;gap:12px}
+.car-btn{
+  width:52px;height:52px;border-radius:12px;cursor:pointer;
+  border:none;background:var(--white);
+  box-shadow:0 3px 10px rgba(0,0,0,.12);
+  display:grid;place-items:center;color:var(--ink);
+  transition:transform .12s ease, opacity .12s ease;
+}
+.car-btn svg{width:24px;height:24px}
+.car-btn:hover:not(:disabled){transform:translateY(-1px)}
+.car-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* =========================================================================
+   OUTCOMES
+   ========================================================================= */
+.outcomes{padding-block:clamp(4px,1vw,10px) clamp(20px,3vw,30px)}
+.outcomes-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.5vw,22px);
+}
+.outcome{
+  background:#f1f3f5;border-radius:14px;padding:clamp(18px,2.5vw,24px);
+  display:flex;flex-direction:column;gap:14px;
+}
+.outcome p{margin:0;font-size:1.02rem;line-height:1.4;color:var(--text)}
+.check--lg{width:30px;height:30px;background:var(--teal)}
+.check--lg::after{left:10px;top:6px;width:7px;height:13px;border-color:var(--white);border-width:0 3px 3px 0}
+
+/* =========================================================================
+   THE ASK
+   ========================================================================= */
+.ask{padding-block:clamp(4px,1vw,10px) clamp(40px,6vw,64px)}
+.ask-banner{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius);
+  background:#008542;
+  min-height:250px;
+  display:grid;place-items:center;
+  padding:clamp(30px,5vw,54px);
+}
+.ask-banner__waves{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:url("assets/green-wave.webp?v=1");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.ask-banner__body{
+  position:relative;z-index:1;text-align:center;color:var(--white);
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.4rem,3.6vw,2.1rem);line-height:1.2;margin:0;max-width:20ch;
+}
+.ask-banner__body strong{display:block;font-weight:800;font-size:1.15em;margin-bottom:.15em}
+
+.site-footer{
+  text-align:center;color:var(--text-soft);font-size:.9rem;
+  padding-block:24px 40px;
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (max-width:760px){
+  .concept-grid{grid-template-columns:1fr}
+  /* keep each chart directly under its own bubble when stacked */
+  .concept-grid > :nth-child(1){order:1}   /* We ask bubble */
+  .concept-grid > :nth-child(3){order:2}   /* bar chart */
+  .concept-grid > :nth-child(2){order:3}   /* @ NYCW bubble */
+  .concept-grid > :nth-child(4){order:4}   /* pie chart */
+  .outcomes-grid{grid-template-columns:1fr}
+
+  /* hero: text on top, the two pills in a row beneath it */
+  .hero-banner{flex-direction:column;align-items:stretch}
+  .hero-banner__body{padding-right:clamp(26px,4vw,44px);padding-bottom:6px}
+  .hero-sub{max-width:none}
+  .hero-banner__photos{
+    position:static;pointer-events:auto;
+    display:flex;gap:clamp(12px,3vw,18px);justify-content:center;
+    padding:0 clamp(20px,5vw,28px) clamp(22px,5vw,30px);
+  }
+  .hero-pill{
+    position:static;inset:auto;
+    width:clamp(120px,34vw,150px);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cases-viewport{scroll-behavior:auto}
+  *{transition:none !important}
+}
