@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="styles.css?v=22" />
 </head>
 <body>
   <main class="page">
@@ -33,9 +33,6 @@
           <figure class="hero-pill hero-pill--cocoa">
             <img src="assets/hero-cocoa.webp" alt="Two cocoa farmers looking at a phone beside drying cacao beans" />
           </figure>
-          <figure class="hero-pill hero-pill--beach">
-            <img src="assets/hero-beach.webp" alt="A great egret taking flight as fishers bring in their net at the shore" />
-          </figure>
         </div>
       </div>
     </header>
@@ -52,20 +49,18 @@
           <div class="bubble bubble--teal">
             <p class="bubble-intro">AI-enabled adaptation solutions are already working.</p>
             <p class="bubble-lead">
-              So what proof would it take to move even a tiny fraction of the
-              Trillions flowing into AI to the people facing the worst of climate change?
+              So what would it take to move even a tiny fraction of the trillions of
+              dollars flowing into AI to the billions of people facing the worst of
+              climate change?<sup class="fn-ref"><a href="#fn1">1</a></sup>
             </p>
           </div>
         </div>
 
         <!-- @ NYCW -->
         <div class="bubble-col">
-          <p class="bubble-eyebrow bubble-eyebrow--green">
-            <svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-            @ NYCW
-          </p>
+          <p class="bubble-eyebrow bubble-eyebrow--green">So at Climate Week&hellip;</p>
           <div class="bubble bubble--green">
-            <p class="bubble-lead">Bring together the 3 audiences who all know parts of the answer.</p>
+            <p class="bubble-lead">We bring together the 3 audiences who all know parts of the answer:</p>
             <ul class="checklist">
               <li><span class="check check--ongreen" aria-hidden="true"></span><span><strong>Nonprofits</strong> with solutions</span></li>
               <li><span class="check check--ongreen" aria-hidden="true"></span><span><strong>Tech Companies</strong> with infrastructure</span></li>
@@ -76,10 +71,16 @@
 
         <!-- chart cards, one under each bubble -->
         <figure class="chart-card">
-          <img class="chart-img" src="assets/chart-ai.webp" alt="Projected AI data-center spend growing to a projected $6.7 trillion by 2030 for data centers alone" />
+          <span class="chart-imgwrap">
+            <img class="chart-img" src="assets/chart-ai.webp?v=3" alt="Projected AI data-center spend growing to a projected $6.7 trillion by 2030 for data centers alone" />
+            <a class="chart-fn chart-fn--ai" href="#fn2" aria-label="Footnote 2">2</a>
+          </span>
         </figure>
         <figure class="chart-card">
-          <img class="chart-img" src="assets/chart-needs.webp" alt="85% of global adaptation needs lie in the Global South" />
+          <span class="chart-imgwrap">
+            <img class="chart-img" src="assets/chart-needs.webp?v=3" alt="85% of global adaptation needs lie in the Global South" />
+            <a class="chart-fn chart-fn--needs" href="#fn3" aria-label="Footnote 3">3</a>
+          </span>
         </figure>
       </div>
     </section>
@@ -274,6 +275,14 @@
           and help steward this critical emerging ecosystem with us?
         </p>
       </div>
+    </section>
+
+    <section class="footnotes container" aria-label="References">
+      <ol class="footnotes-list">
+        <li id="fn1">Intergovernmental Panel on Climate Change (IPCC), <em>Climate Change 2023 Synthesis Report</em>, 2023. Available at: <a class="fn-link" href="https://www.ipcc.ch/report/ar6/syr/downloads/report/IPCC_AR6_SYR_SPM.pdf" target="_blank" rel="noopener noreferrer">https://www.ipcc.ch/report/ar6/syr/downloads/report/IPCC_AR6_SYR_SPM.pdf</a></li>
+        <li id="fn2">McKinsey &amp; Company. <em>The cost of compute: A $7 trillion race to scale data centers</em>. Technology, Media &amp; Telecommunications Practice, April 2025. Available at: <a class="fn-link" href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers" target="_blank" rel="noopener noreferrer">https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers</a></li>
+        <li id="fn3">UNEP, <em>Adaptation Gap Report</em>, 2023. Available at: <a class="fn-link" href="https://www.unep.org/resources/adaptation-gap-report-2023" target="_blank" rel="noopener noreferrer">https://www.unep.org/resources/adaptation-gap-report-2023</a></li>
+      </ol>
     </section>
 
     <footer class="site-footer container">
